@@ -72,7 +72,7 @@ class NearbyControleeConnectorTest {
         UwbConnectionInfo.newBuilder()
           .setConfiguration(
             UwbConfiguration.newBuilder()
-              .setConfigId(RangingParameters.UWB_CONFIG_ID_1)
+              .setConfigId(RangingParameters.CONFIG_UNICAST_DS_TWR)
               .setChannel(9)
               .setPreambleIndex(11)
               .setSessionId(0x12345678)
@@ -92,7 +92,7 @@ class NearbyControleeConnectorTest {
         UwbConnectionInfo.newBuilder()
           .setCapabilities(
             UwbCapabilities.newBuilder()
-              .addAllSupportedConfigIds(listOf(RangingParameters.UWB_CONFIG_ID_1))
+              .addAllSupportedConfigIds(listOf(RangingParameters.CONFIG_UNICAST_DS_TWR))
               .setSupportsAzimuth(true)
               .setSupportsElevation(true)
               .build()
@@ -153,7 +153,7 @@ class NearbyControleeConnectorTest {
     assertThat(event.sessionScope).isSameInstanceAs(controleeSessionScope)
     assertThat(event.complexChannel.channel).isEqualTo(9)
     assertThat(event.complexChannel.preambleIndex).isEqualTo(11)
-    assertThat(event.configId).isEqualTo(RangingParameters.UWB_CONFIG_ID_1)
+    assertThat(event.configId).isEqualTo(RangingParameters.CONFIG_UNICAST_DS_TWR)
     assertThat(event.endpointAddress).isEqualTo(UwbAddress(byteArrayOf(3, 4)))
     assertThat(event.endpoint.id).isEqualTo("UWB2")
     assertThat(event.endpoint.metadata).isEqualTo(byteArrayOf(3, 4, 5))

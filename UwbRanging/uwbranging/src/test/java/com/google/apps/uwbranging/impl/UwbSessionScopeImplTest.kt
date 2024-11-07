@@ -93,7 +93,7 @@ class UwbSessionScopeImplTest {
     oobEventPipe(
       UwbOobEvent.UwbEndpointFound(
         remoteEndpoint,
-        RangingParameters.UWB_CONFIG_ID_1,
+        RangingParameters.CONFIG_UNICAST_DS_TWR,
         remoteAddress,
         complexChannel,
         sessionId,
@@ -109,7 +109,7 @@ class UwbSessionScopeImplTest {
     val rangingParameterCaptor = argumentCaptor<RangingParameters>()
     verify(uwbSessionScope).prepareSession(rangingParameterCaptor.capture())
     val rangingParameters = rangingParameterCaptor.lastValue
-    assertThat(rangingParameters.uwbConfigType).isEqualTo(RangingParameters.UWB_CONFIG_ID_1)
+    assertThat(rangingParameters.uwbConfigType).isEqualTo(RangingParameters.CONFIG_UNICAST_DS_TWR)
     assertThat(rangingParameters.peerDevices.size).isEqualTo(1)
     assertThat(rangingParameters.peerDevices[0].address).isEqualTo(remoteAddress)
     assertThat(rangingParameters.complexChannel!!.channel).isEqualTo(complexChannel.channel)
